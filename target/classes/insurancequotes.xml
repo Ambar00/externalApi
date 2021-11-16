@@ -5,8 +5,8 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
     <http:listener-config name="insurancequotes-httpListenerConfig">
         <http:listener-connection host="0.0.0.0" port="8081" />
     </http:listener-config>
-    <apikit:config name="insurancequotes-config" api="resource::ad30d2ec-566c-4843-a49d-80728a57ffdc:insurancequotes:1.0.0:raml:zip:insurancequotes.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-	<flow name="insurancequotes-main">
+    <apikit:config name="insurancequotes-config" api="resource::7366df07-275c-4be5-b6f2-ec1fca812051:insurancequotes:1.0.1:raml:zip:insurancequotes.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <flow name="insurancequotes-main">
         <http:listener config-ref="insurancequotes-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
@@ -126,7 +126,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\quotes:insurancequotes-config">
-		<db:select doc:id="0a77ed9b-7c28-41dc-a936-776dd64b8ef7" config-ref="Database_Config">
+		<db:select doc:name="Copy_of_Copy_of_Select" doc:id="479e9b0f-8c65-4cd8-8604-24db98349666" config-ref="Database_Config" >
 			<db:sql ><![CDATA[Select * from InsuranceQuotes where PREMIUMPROVIDER=:PROVIDER and PREMIUMTYPE=:TYPE]]></db:sql>
 			<db:input-parameters ><![CDATA[#[{
 	PROVIDER: attributes.queryParams.PremiumProvider,
@@ -138,22 +138,23 @@ output application/json
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json
 ---
-payload[0]]]></ee:set-payload>
+[
+  {
+    ID: 1,
+    name: "Max",
+    gender: "M",
+    age: 34,
+    city: "Patna",
+    contactNumber: 1234567790,
+    salary: 25000,
+    premiumProvider: "Care Health Insurance",
+    premiumName: "Heathcare",
+    premiumType: "Gold",
+    coverageAmount: 50000,
+    emailId: "max@gmail.com"
+  }
+]]]></ee:set-payload>
             </ee:message>
         </ee:transform>
-		<error-handler >
-			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="031b9cfe-5045-46a5-ae19-cfb3de61aa5c" >
-				<ee:transform doc:name="Transform Message" doc:id="8117f6aa-9984-4083-aa48-fd73bd37da6d" >
-					<ee:message >
-						<ee:set-payload ><![CDATA[%dw 2.0
-output application/java
----
-{
-	"Status": "Server Unavailable"
-}]]></ee:set-payload>
-					</ee:message>
-				</ee:transform>
-			</on-error-continue>
-		</error-handler>
     </flow>
 </mule>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>7366df07-275c-4be5-b6f2-ec1fca812051</groupId>
+  <artifactId>insurancequotes</artifactId>
+  <version>1.0.1</version>
+  <name>insuranceQuotes</name>
+  <properties>
+    <classifier>raml</classifier>
+    <main>insurancequotes.raml</main>
+    <originalFormatVersion>1.0</originalFormatVersion>
+    <apiVersion>1.0</apiVersion>
+    <projectId>5db3f582-5fc4-4bff-b766-9e51efc6db41</projectId>
+    <branchId>master</branchId>
+    <commitId>0a9eb525dfa6b685cf62bda5b543c1616d411758</commitId>
+    <keywords/>
+    <type>rest-api</type>
+    <mainFile>insurancequotes.raml</mainFile>
+  </properties>
+  <repositories>
+    <repository>
+      <id>anypoint-exchange</id>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+    </repository>
+  </repositories>
+</project>
