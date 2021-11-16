@@ -126,7 +126,6 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\quotes:insurancequotes-config">
-        <logger level="INFO" doc:name="Logger" doc:id="d9db613f-2a16-4180-8fd7-3dc9a42ccaea" message="#[payload]"/>
 		<db:select doc:id="0a77ed9b-7c28-41dc-a936-776dd64b8ef7" config-ref="Database_Config">
 			<db:sql ><![CDATA[Select * from InsuranceQuotes where PREMIUMPROVIDER=:PROVIDER and PREMIUMTYPE=:TYPE]]></db:sql>
 			<db:input-parameters ><![CDATA[#[{
