@@ -1,0 +1,6 @@
+DB:
+  host: "sql6.freesqldatabase.com"
+  port: "3306"
+  name: "sql6450040"
+  password: "SSMRwaHnG2"
+  schema: "sql6450040"
